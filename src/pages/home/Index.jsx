@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
 import { Banner } from "../../components/common/Banner";
 import BannerImage from "../../assets/banner_img1.png";
+import CardImage1 from "../../assets/CardImage1.png";
+import CardImage2 from "../../assets/CardImage2.png";
+import CardImage3 from "../../assets/CardImage3.png";
 
 export const Index = () => {
   const features = [
@@ -22,7 +25,7 @@ export const Index = () => {
 
   const categories = [
     {
-      image: "",
+      image: CardImage1,
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +45,7 @@ export const Index = () => {
       description: "Premium quality trophies for every achievement",
     },
     {
-      image: "",
+      image: CardImage2,
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +65,7 @@ export const Index = () => {
       description: "Professional-grade sporting goods and accessories",
     },
     {
-      image: "",
+      image: CardImage3,
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

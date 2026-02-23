@@ -3,6 +3,7 @@ import { TopBanner } from "../../components/common/TopBanner";
 import BannerImage from "../../assets/ContactBanner.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 
 const CAPTCHA_CHARS = [
   { char: "P", color: "#e6a817" },
@@ -54,6 +55,7 @@ const validationSchema = Yup.object().shape({
 
 export const ContactIndex = () => {
   const [captcha, setCaptcha] = useState(CAPTCHA_CHARS);
+  const [emailSendStatus, setEmailSendStatus] = useState(null);
   const captchaTextRef = useRef(getCaptchaText(CAPTCHA_CHARS));
 
   const inputClass =
@@ -72,6 +74,53 @@ export const ContactIndex = () => {
     const newCaptcha = generateCaptcha();
     setCaptcha(newCaptcha);
     captchaTextRef.current = getCaptchaText(newCaptcha);
+  };
+
+  const handleSendEmail = async (values, { setSubmitting, resetForm, setFieldError }) => {
+    const currentCaptcha = captchaTextRef.current;
+    if (
+      values.captchaInput.trim().toUpperCase() !==
+      currentCaptcha.toUpperCase()
+    ) {
+      setFieldError(
+        "captchaInput",
+        "Captcha does not match. Please try again."
+      );
+      setSubmitting(false);
+      refreshCaptcha();
+      return;
+    }
+
+    const SERVICE_ID = import.meta.env.VITE_SERVICE_ID
+    const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
+    const USER_ID = import.meta.env.VITE_USER_ID;
+
+    console.log(SERVICE_ID, TEMPLATE_ID, USER_ID);
+    
+
+    const templateParams = {
+      fullName: values.fullName,
+      phoneNumber: values.phoneNumber,
+      emailAddress: values.emailAddress,
+      message: values.message,
+    };
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        USER_ID
+      );
+      setEmailSendStatus("success");
+      resetForm();
+      refreshCaptcha();
+    } catch (error) {
+      setEmailSendStatus("error");
+      // Optionally, log error: console.error("EmailJS error:", error);
+    }
+
+    setSubmitting(false);
   };
 
   return (
@@ -244,28 +293,10 @@ export const ContactIndex = () => {
                 captchaInput: "",
               }}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting, resetForm, setFieldError }) => {
-                const currentCaptcha = captchaTextRef.current;
-                if (
-                  values.captchaInput.trim().toUpperCase() !==
-                  currentCaptcha.toUpperCase()
-                ) {
-                  setFieldError(
-                    "captchaInput",
-                    "Captcha does not match. Please try again."
-                  );
-                  setSubmitting(false);
-                  refreshCaptcha();
-                  return;
-                }
-                // Simulate form submission
-                console.log("Form submitted:", values);
-                setSubmitting(false);
-                resetForm();
-                refreshCaptcha();
-              }}
+              onSubmit={handleSendEmail}
               onReset={() => {
                 refreshCaptcha();
+                setEmailSendStatus(null);
               }}
             >
               {({
@@ -276,6 +307,18 @@ export const ContactIndex = () => {
                 setFieldTouched,
               }) => (
                 <Form>
+                  {/* Alert after email sent */}
+                  {emailSendStatus === "success" && (
+                    <div className="mb-2 text-green-600 text-sm font-semibold">
+                      Message sent successfully!
+                    </div>
+                  )}
+                  {emailSendStatus === "error" && (
+                    <div className="mb-2 text-red-600 text-sm font-semibold">
+                      There was a problem sending your message. Please try again.
+                    </div>
+                  )}
+
                   {/* Row 1: Full Name + Phone */}
                   <div className="flex gap-4">
                     <div className="flex-1">

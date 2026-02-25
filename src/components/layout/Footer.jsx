@@ -1,5 +1,4 @@
 import React from "react";
-import trophyLogo from "../../assets/FooterLogo.png";
 
 const socialMediaLinks = [
   {
@@ -102,7 +101,7 @@ export const Footer = () => {
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 mb-10">
         <div className="flex flex-col gap-5 min-w-[220px]">
           <img
-            src={trophyLogo}
+            src='/FooterLogo.png'
             alt="Glenroy Sports & Trophies Logo"
             className="w-[60px] h-[60px] object-cover"
           />

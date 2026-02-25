@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import trophyLogo from "../../assets/trophy_logo.png";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,7 +31,7 @@ export const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <img
-            src={trophyLogo}
+            src="/trophy_logo.png"
             alt="Logo"
             className="w-[36px] h-[32px] md:w-[40px] md:h-[36px] mr-2 md:mr-3"
             style={{ objectFit: "contain" }}

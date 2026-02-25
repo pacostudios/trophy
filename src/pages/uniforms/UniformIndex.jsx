@@ -1,13 +1,5 @@
 import React from "react";
 import { TopBanner } from "../../components/common/TopBanner";
-import Trophy_Image from "../../assets/Uniform_b_banner.png";
-import BannerImage from "../../assets/Uniform_Topbanner.png";
-import uniform1 from "../../assets/uniform1.png";
-import uniform2 from "../../assets/uniform2.png";
-import uniform3 from "../../assets/uniform3.png";
-import uniform4 from "../../assets/uniform4.png";
-import uniform5 from "../../assets/uniform5.png";
-import uniform6 from "../../assets/uniform6.png";
 import { CatelogCard } from "../../components/common/CatelogCard";
 import { Banner } from "../../components/common/Banner";
 
@@ -31,32 +23,32 @@ export const UniformIndex = () => {
     {
       id: 1,
       alt: "Uniform1",
-      src: uniform1,
+      src: '/uniform1.png',
     },
     {
       id: 2,
       alt: "Uniform2",
-      src: uniform2,
+      src: '/uniform2.png',
     },
     {
       id: 3,
       alt: "Uniform3",
-      src: uniform3,
+      src: '/uniform3.png',
     },
     {
       id: 4,
       alt: "Uniform4",
-      src: uniform4,
+      src: '/uniform4.png',
     },
     {
       id: 5,
       alt: "Uniform5",
-      src: uniform5,
+      src: '/uniform5.png',
     },
     {
       id: 6,
       alt: "Uniform6",
-      src: uniform6,
+      src: '/uniform6.png',
     },
   ];
 
@@ -79,7 +71,7 @@ export const UniformIndex = () => {
   return (
     <div>
       <TopBanner
-        image={BannerImage}
+        image={'/Uniform_Topbanner.png'}
         icon={icon}
         chip_title={"CLOTHING & UNIFORMS"}
         title={"CLOTHING & UNIFORMS"}
@@ -166,7 +158,7 @@ export const UniformIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={Trophy_Image} />
+      <Banner image={'/Uniform_b_banner.png'} />
     </div>
   );
 };

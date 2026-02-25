@@ -1,14 +1,6 @@
 import React from "react";
 import { TopBanner } from "../../components/common/TopBanner";
-import BannerImage from "../../assets/sports_banner.png";
-import Football from "../../assets/Football.png";
-import Amr_Football from "../../assets/Amer-Football.png";
-import BaseballBat from "../../assets/BaseballBat.png";
-import Baseball from "../../assets/Baseball.png";
-import Bat from "../../assets/bat.png";
-import Cricketball from "../../assets/cricketball.png";
 import { CatelogCard } from "../../components/common/CatelogCard";
-import Kit from "../../assets/Kit.png";
 import { Banner } from "../../components/common/Banner";
 
 export const SportsIndex = () => {
@@ -31,37 +23,37 @@ export const SportsIndex = () => {
     {
       id: 1,
       alt: "Soccer Ball",
-      src: Football,
+      src: '/Football.png',
     },
     {
       id: 2,
       alt: "American Football",
-      src: Amr_Football,
+      src: '/Amer-Football.png',
     },
     {
       id: 3,
       alt: "Baseball Bat",
-      src: BaseballBat,
+      src: '/BaseballBat.png',
     },
     {
       id: 4,
       alt: "Baseball",
-      src: Baseball,
+      src: '/Baseball.png',
     },
     {
       id: 5,
       alt: "Cricket Bat",
-      src: Bat,
+      src: '/bat.png',
     },
     {
       id: 6,
       alt: "Cricket Ball",
-      src: Cricketball,
+      src: '/cricketball.png',
     },
   ];
 
   const features = [
-    { label: "Wide Product Range" },
+    { label: `Wide Product Range` },
     { label: "Team Uniforms" },
     { label: "Quality Brands" },
   ];
@@ -75,7 +67,7 @@ export const SportsIndex = () => {
   return (
     <div>
       <TopBanner
-        image={BannerImage}
+        image={'/sports_banner.png'}
         icon={icon}
         chip_title={"SPORTS PRODUCTS"}
         title={"Sports Equipment & Merchandise"}
@@ -161,7 +153,7 @@ export const SportsIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={Kit} />
+      <Banner image={'/Kit.png'} />
     </div>
   );
 };

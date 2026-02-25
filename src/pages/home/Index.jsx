@@ -1,14 +1,8 @@
 import React from "react";
 import TrophyCard from "../../components/common/TrophyCard";
-import ShopImage from "../../assets/shop_image.png";
-import Trophy_Image from "../../assets/Trophy_Image.png";
 import { Link } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
 import { Banner } from "../../components/common/Banner";
-import BannerImage from "../../assets/banner_img1.png";
-import CardImage1 from "../../assets/CardImage1.png";
-import CardImage2 from "../../assets/CardImage2.png";
-import CardImage3 from "../../assets/CardImage3.png";
 
 export const Index = () => {
   const features = [
@@ -25,7 +19,7 @@ export const Index = () => {
 
   const categories = [
     {
-      image: CardImage1,
+      image: '/CardImage1.png',
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +39,7 @@ export const Index = () => {
       description: "Premium quality trophies for every achievement",
     },
     {
-      image: CardImage2,
+      image: '/CardImage2.png',
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +59,7 @@ export const Index = () => {
       description: "Professional-grade sporting goods and accessories",
     },
     {
-      image: CardImage3,
+      image: '/CardImage3.png',
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +163,7 @@ export const Index = () => {
     <div className="h-full flex flex-col gap-6 sm:gap-8">
       <div className="relative w-full min-h-[400px] flex items-center">
         <img
-          src={BannerImage}
+          src={'/banner_img1.png'}
           alt="Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -252,7 +246,7 @@ export const Index = () => {
         </p>
         <div className="w-full flex justify-center">
           <img
-            src={ShopImage}
+            src={'/shop_image.png'}
             alt="Award background"
             className="w-full max-w-[600px] h-[180px] sm:h-[240px] md:h-[270px] lg:h-[300px] object-cover rounded-lg shadow-lg"
           />
@@ -297,7 +291,7 @@ export const Index = () => {
         </div>
       </div>
 
-      <Banner image={Trophy_Image} />
+      <Banner image={'/Trophy_Image.png'} />
     </div>
   );
 };

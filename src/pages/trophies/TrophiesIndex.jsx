@@ -1,13 +1,5 @@
 import React from "react";
 import { TopBanner } from "../../components/common/TopBanner";
-import Trophy_Image from "../../assets/Trophy_Image.png";
-import BannerImage from "../../assets/Trophies_banner.png";
-import Trophy1 from "../../assets/Trophy1.png";
-import Trophy2 from "../../assets/Trophy2.png";
-import Trophy3 from "../../assets/Trophy3.png";
-import Trophy4 from "../../assets/Trophy4.png";
-import Trophy5 from "../../assets/Trophy5.png";
-import Trophy6 from "../../assets/Trophy6.png";
 import { CatelogCard } from "../../components/common/CatelogCard";
 import { Banner } from "../../components/common/Banner";
 
@@ -31,32 +23,32 @@ export const TrophiesIndex = () => {
     {
       id: 1,
       alt: "Trophy1",
-      src: Trophy1,
+      src: '/Trophy1.png',
     },
     {
       id: 2,
       alt: "Trophy2",
-      src: Trophy2,
+      src: '/Trophy2.png',
     },
     {
       id: 3,
       alt: "Trophy3",
-      src: Trophy3,
+      src: '/Trophy3.png',
     },
     {
       id: 4,
       alt: "Trophy4",
-      src: Trophy4,
+      src: '/Trophy4.png',
     },
     {
       id: 5,
       alt: "Trophy5",
-      src: Trophy5,
+      src: '/Trophy5.png',
     },
     {
       id: 6,
       alt: "Trophy6",
-      src: Trophy6,
+      src: '/Trophy6.png',
     },
   ];
 
@@ -79,7 +71,7 @@ export const TrophiesIndex = () => {
   return (
     <div>
       <TopBanner
-        image={BannerImage}
+        image={'/Trophies_banner.png'}
         icon={icon}
         chip_title={"TROPHIES & AWARDS"}
         title={"Trophies & Awards Collection"}
@@ -166,7 +158,7 @@ export const TrophiesIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={Trophy_Image} />
+      <Banner image={'/Trophy_Image.png'} />
     </div>
   );
 };

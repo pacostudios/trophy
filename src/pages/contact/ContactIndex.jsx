@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { TopBanner } from "../../components/common/TopBanner";
-import BannerImage from "../../assets/ContactBanner.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
@@ -126,7 +125,7 @@ export const ContactIndex = () => {
   return (
     <div>
       <TopBanner
-        image={BannerImage}
+        image={'/ContactBanner.png'}
         ischip={false}
         title={"CONTACT US"}
         description={

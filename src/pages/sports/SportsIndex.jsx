@@ -116,9 +116,22 @@ export const SportsIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-wrap justify-center gap-16">
+        <div
+          className="
+            flex flex-wrap justify-center gap-16
+            sm:grid sm:grid-cols-1 sm:gap-8 sm:justify-items-center
+            md:flex md:flex-wrap md:justify-center md:gap-16
+          "
+        >
           {features.map((feature) => (
-            <div key={feature.label} className="flex items-center gap-2">
+            <div
+              key={feature.label}
+              className="
+                flex items-center gap-2
+                w-full justify-center
+                sm:w-auto sm:justify-start
+              "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="34"

@@ -23,32 +23,32 @@ export const UniformIndex = () => {
     {
       id: 1,
       alt: "Uniform1",
-      src: '/uniform1.png',
+      src: "/uniform1.png",
     },
     {
       id: 2,
       alt: "Uniform2",
-      src: '/uniform2.png',
+      src: "/uniform2.png",
     },
     {
       id: 3,
       alt: "Uniform3",
-      src: '/uniform3.png',
+      src: "/uniform3.png",
     },
     {
       id: 4,
       alt: "Uniform4",
-      src: '/uniform4.png',
+      src: "/uniform4.png",
     },
     {
       id: 5,
       alt: "Uniform5",
-      src: '/uniform5.png',
+      src: "/uniform5.png",
     },
     {
       id: 6,
       alt: "Uniform6",
-      src: '/uniform6.png',
+      src: "/uniform6.png",
     },
   ];
 
@@ -71,7 +71,7 @@ export const UniformIndex = () => {
   return (
     <div>
       <TopBanner
-        image={'/Uniform_Topbanner.png'}
+        image={"/Uniform_Topbanner.png"}
         icon={icon}
         chip_title={"CLOTHING & UNIFORMS"}
         title={"CLOTHING & UNIFORMS"}
@@ -121,9 +121,22 @@ export const UniformIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-wrap justify-center gap-16">
+        <div
+          className="
+            flex flex-wrap justify-center gap-16
+            sm:grid sm:grid-cols-1 sm:gap-8 sm:justify-items-center
+            md:flex md:flex-wrap md:justify-center md:gap-16
+          "
+        >
           {features.map((feature) => (
-            <div key={feature.label} className="flex items-center gap-2">
+            <div
+              key={feature.label}
+              className="
+                flex items-center gap-2
+                w-full justify-center
+                sm:w-auto sm:justify-start
+              "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="34"
@@ -158,7 +171,7 @@ export const UniformIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={'/Uniform_b_banner.png'} />
+      <Banner image={"/Uniform_b_banner.png"} />
     </div>
   );
 };

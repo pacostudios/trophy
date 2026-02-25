@@ -23,32 +23,32 @@ export const TrophiesIndex = () => {
     {
       id: 1,
       alt: "Trophy1",
-      src: '/Trophy1.png',
+      src: "/Trophy1.png",
     },
     {
       id: 2,
       alt: "Trophy2",
-      src: '/Trophy2.png',
+      src: "/Trophy2.png",
     },
     {
       id: 3,
       alt: "Trophy3",
-      src: '/Trophy3.png',
+      src: "/Trophy3.png",
     },
     {
       id: 4,
       alt: "Trophy4",
-      src: '/Trophy4.png',
+      src: "/Trophy4.png",
     },
     {
       id: 5,
       alt: "Trophy5",
-      src: '/Trophy5.png',
+      src: "/Trophy5.png",
     },
     {
       id: 6,
       alt: "Trophy6",
-      src: '/Trophy6.png',
+      src: "/Trophy6.png",
     },
   ];
 
@@ -71,7 +71,7 @@ export const TrophiesIndex = () => {
   return (
     <div>
       <TopBanner
-        image={'/Trophies_banner.png'}
+        image={"/Trophies_banner.png"}
         icon={icon}
         chip_title={"TROPHIES & AWARDS"}
         title={"Trophies & Awards Collection"}
@@ -121,9 +121,22 @@ export const TrophiesIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-wrap justify-center gap-16">
+        <div
+          className="
+            flex flex-wrap justify-center gap-16
+            sm:grid sm:grid-cols-1 sm:gap-8 sm:justify-items-center
+            md:flex md:flex-wrap md:justify-center md:gap-16
+          "
+        >
           {features.map((feature) => (
-            <div key={feature.label} className="flex items-center gap-2">
+            <div
+              key={feature.label}
+              className="
+                flex items-center gap-2
+                w-full justify-center
+                sm:w-auto sm:justify-start
+              "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="34"
@@ -158,7 +171,7 @@ export const TrophiesIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={'/Trophy_Image.png'} />
+      <Banner image={"/Trophy_Image.png"} />
     </div>
   );
 };

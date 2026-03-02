@@ -34,6 +34,11 @@ export const CatelogCard = ({ data }) => {
                   data.buttons.map((button, idx) => (
                     <button
                       key={idx}
+                      type="button"
+                      onClick={() => {
+                        if (!button?.link) return;
+                        window.open(button.link, "_blank", "noopener,noreferrer");
+                      }}
                       className="bg-[#C91526] flex items-center gap-2 px-5 py-2.5 rounded text-white text-sm font-medium transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 mb-2"
                     >
                       {button.title}

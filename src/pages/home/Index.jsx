@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TrophyCard from "../../components/common/TrophyCard";
 import { Link, useNavigate } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
@@ -164,6 +164,32 @@ export const Index = () => {
     navigate("/contact");
   };
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const animatedElements = document.querySelectorAll(
+      ".scroll-fade-up, .scroll-zoom-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="h-full flex flex-col gap-6 sm:gap-8">
       <div className="relative w-full min-h-[400px] flex items-center">
@@ -176,11 +202,11 @@ export const Index = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <div className="relative z-10 flex flex-col items-start justify-center px-6 sm:px-10 md:px-16">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white animate-heading-hero">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white animate-heading-hero scroll-fade-up">
             Celebrate Every Victory
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-white max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 text-white max-w-2xl scroll-fade-up">
             Premium Trophies & Awards for Champions.
           </p>
 
@@ -193,7 +219,7 @@ export const Index = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-around items-center sm:items-start gap-4 sm:gap-6 md:gap-8 my-4 sm:my-6 px-4 sm:px-6 md:px-8">
+      <div className="flex flex-col sm:flex-row justify-center sm:justify-around items-center sm:items-start gap-4 sm:gap-6 md:gap-8 my-4 sm:my-6 px-4 sm:px-6 md:px-8 scroll-fade-up">
         {features.map((item, index) => (
           <div
             key={index}
@@ -222,44 +248,45 @@ export const Index = () => {
 
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 py-8 sm:py-10 md:py-12 bg-[#F5F5F5] px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="text-center px-2">
-          <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62]">
+          <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] scroll-fade-up">
             Shop by Category
           </p>
-          <p className="text-sm sm:text-base md:text-lg lg:text-[20px] max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg lg:text-[20px] max-w-3xl mx-auto scroll-fade-up">
             Browse our comprehensive range of products designed to celebrate
             success.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto w-full">
           {categories.map((cat, idx) => (
-            <TrophyCard
-              key={idx}
-              image={cat.image}
-              icon={cat.icons}
-              title={cat.title}
-              description={cat.description}
-            />
+            <div key={idx} className="scroll-zoom-card">
+              <TrophyCard
+                image={cat.image}
+                icon={cat.icons}
+                title={cat.title}
+                description={cat.description}
+              />
+            </div>
           ))}
         </div>
       </div>
 
       <div className="flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
-        <div className="py-2 px-6 bg-[#C9152633] rounded-full">
+        <div className="py-2 px-6 bg-[#C9152633] rounded-full scroll-fade-up">
           <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] font-semibold text-[#C91526]">
             About Us
           </p>
         </div>
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center scroll-fade-up">
           30+ Years of Excellence{" "}
         </p>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center scroll-fade-up">
           <img
             src={"/shop_image.png"}
             alt="Award background"
             className="w-full max-w-[600px] h-[180px] sm:h-[240px] md:h-[270px] lg:h-[300px] object-cover rounded-lg shadow-lg"
           />
         </div>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl text-center">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl text-center scroll-fade-up">
           For over 30+ years, Glenroy Sports & Trophies have been proud
           suppliers & stockists of many different sporting clubs. We endeavour
           to help nurture young talent in the community by offering
@@ -270,7 +297,7 @@ export const Index = () => {
           core of our service, and each agency comes with engaging ideas to meet
           every one of our customers' bespoke needs.
         </p>
-        <div>
+        <div className="scroll-fade-up">
           <Link
             to="/contact"
             className="bg-[#0A3D62] hover:bg-[#0A3D62] text-white font-semibold py-2 px-4 lg:px-5 rounded-full transition-colors duration-200 text-sm lg:text-base"
@@ -281,20 +308,21 @@ export const Index = () => {
       </div>
 
       <div className="bg-[#F5F5F5] flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center scroll-fade-up">
           Our Services
         </p>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center scroll-fade-up">
           Professional services tailored to your needs.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto w-full">
           {services.map((service, idx) => (
-            <ServiceCard
-              key={idx}
-              icon={service.icons}
-              title={service.title}
-              description={service.description}
-            />
+            <div key={idx} className="scroll-zoom-card">
+              <ServiceCard
+                icon={service.icons}
+                title={service.title}
+                description={service.description}
+              />
+            </div>
           ))}
         </div>
       </div>

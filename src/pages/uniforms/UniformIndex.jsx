@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TopBanner } from "../../components/common/TopBanner";
 import { CatelogCard } from "../../components/common/CatelogCard";
 import { Banner } from "../../components/common/Banner";
+import FeatureChip from "../../components/common/FeatureChip";
 
 export const UniformIndex = () => {
   const icon = (
@@ -52,10 +53,106 @@ export const UniformIndex = () => {
     },
   ];
 
+  const DesignIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <rect
+        x="4"
+        y="5"
+        width="16"
+        height="14"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M8 9H16"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8 12H13"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
+  const FabricIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M5 6L9 4L15 6L19 4V14L15 16L9 14L5 16V6Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 14V4"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M15 16V6"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+    </svg>
+  );
+
+  const ClockIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M12 9V12L14 14"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+
   const features = [
-    { label: "Custom Designs" },
-    { label: "Quality Materials" },
-    { label: "Fast Turnaround" },
+    {
+      title: "Custom Designs",
+      subtitle: "Tailored Looks",
+      icon: DesignIcon,
+    },
+    {
+      title: "Quality Materials",
+      subtitle: "Comfort & Durability",
+      icon: FabricIcon,
+    },
+    {
+      title: "Fast Turnaround",
+      subtitle: "On-Time Delivery",
+      icon: ClockIcon,
+    },
   ];
 
   const catelogData = {
@@ -63,11 +160,37 @@ export const UniformIndex = () => {
     description:
       "Click below to visit our partner websites and explore their full range of uniforms and apparel.",
     buttons: [
-      { title: "aussiepacific.com", link: "#" },
-      { title: "winnigspirit.in", link: "#" },
-      { title: "benchmarkuniforms.com", link: "#" },
+      { title: "aussiepacific.com", link: "https://www.aussiepacific.com/" },
+      { title: "winnigspirit.in", link: "http://www.winnigspirit.info/" },
+      { title: "benchmarkuniforms.com", link: "https://www.winningspirit.com.au/benchmark" },
     ],
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const animatedElements = document.querySelectorAll(
+      ".scroll-fade-up, .scroll-zoom-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <div>
       <TopBanner
@@ -82,7 +205,7 @@ export const UniformIndex = () => {
 
       <section className="w-full bg-white py-14 px-6">
         {/* Title */}
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center scroll-fade-up">
           Custom Uniforms & Apparel
         </p>
 
@@ -91,7 +214,7 @@ export const UniformIndex = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex items-center justify-center rounded-lg"
+              className="flex items-center justify-center rounded-lg scroll-zoom-card"
               style={{
                 backgroundColor: "#f3f4f6",
                 width: "200px",
@@ -108,7 +231,7 @@ export const UniformIndex = () => {
         </div>
 
         {/* Description */}
-        <div className="max-w-2xl mx-auto text-center mb-10">
+        <div className="max-w-2xl mx-auto text-center mb-10 scroll-fade-up">
           <p className="text-sm leading-relaxed">
             Glenroy Sports & Trophies offers a comprehensive range of custom
             uniforms and clothing solutions for sports teams, schools, and
@@ -121,51 +244,33 @@ export const UniformIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-col items-center gap-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-16">
+        <div className="flex flex-col items-center gap-4 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-6">
           {features.map((feature) => (
             <div
-              key={feature.label}
-              className="flex items-start gap-3 w-full max-w-[180px]"
+              key={feature.title}
+              className="w-full md:w-auto scroll-fade-up"
             >
-              {/* Icon */}
-              <div className="flex-shrink-0 mt-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                >
-                  <rect width="34" height="34" rx="17" fill="#0A3D62" />
-                  <rect
-                    x="8"
-                    y="8"
-                    width="18"
-                    height="18"
-                    rx="9"
-                    fill="#C91526"
-                  />
-                </svg>
-              </div>
-
-              {/* Text */}
-              <span className="font-medium text-sm mt-3 leading-snug text-left">
-                {feature.label}
-              </span>
+              <FeatureChip
+                icon={feature.icon}
+                subtitle={feature.subtitle}
+                title={feature.title}
+              />
             </div>
           ))}
         </div>
       </section>
 
       <div className="bg-[#F5F5F5] flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center scroll-fade-up">
           Ready to Order?
         </p>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center scroll-fade-up">
           Click below to browse our full clothing catalog and place your order.
         </p>
 
-        <CatelogCard data={catelogData} />
+        <div>
+          <CatelogCard data={catelogData} />
+        </div>
       </div>
 
       <Banner image={"/Uniform_b_banner.png"} />

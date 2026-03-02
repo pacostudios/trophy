@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TopBanner } from "../../components/common/TopBanner";
 import { CatelogCard } from "../../components/common/CatelogCard";
 import { Banner } from "../../components/common/Banner";
+import FeatureChip from "../../components/common/FeatureChip";
 
 export const TrophiesIndex = () => {
   const icon = (
@@ -52,10 +53,110 @@ export const TrophiesIndex = () => {
     },
   ];
 
+  const TrophyIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M6 5.5V4H18V5.5C18 8.5 16 11 12 11C8 11 6 8.5 6 5.5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M10 14H14V16.5C14 17.328 13.328 18 12.5 18H11.5C10.672 18 10 17.328 10 16.5V14Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M8 4H6C5.17157 4 4.5 4.67157 4.5 5.5C4.5 7.15685 5.84315 8.5 7.5 8.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M16 4H18C18.8284 4 19.5 4.67157 19.5 5.5C19.5 7.15685 18.1569 8.5 16.5 8.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+
+  const EngraveIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <rect
+        x="4"
+        y="6"
+        width="16"
+        height="12"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M7 10H17"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7 13H13"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
+  const MedalIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle
+        cx="12"
+        cy="13"
+        r="4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M9 4L11.5 7.5H12.5L15 4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+
   const features = [
-    { label: "Extensive Trophy Range" },
-    { label: "Professional Engraving" },
-    { label: "Quality Materials" },
+    {
+      title: "Extensive Trophy Range",
+      subtitle: "For Every Event",
+      icon: TrophyIcon,
+    },
+    {
+      title: "Professional Engraving",
+      subtitle: "Personalised Awards",
+      icon: EngraveIcon,
+    },
+    {
+      title: "Quality Materials",
+      subtitle: "Built To Last",
+      icon: MedalIcon,
+    },
   ];
 
   const catelogData = {
@@ -63,11 +164,37 @@ export const TrophiesIndex = () => {
     description:
       "Browse our comprehensive trophy catalog with hundreds of options for every occasion.",
     buttons: [
-      { title: "trophiesgalore.com", link: "#" },
-      { title: "trophy.com", link: "#" },
-      { title: "trophies.com", link: "#" },
+      { title: "trophiesgalore.com", link: "https://www.trophiesgalore.com.au/" },
+      { title: "trophy.com", link: "https://trophy.com.au/" },
+      { title: "trophies.com", link: "https://trophies.com.au/" },
     ],
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const animatedElements = document.querySelectorAll(
+      ".scroll-fade-up, .scroll-zoom-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <div>
       <TopBanner
@@ -82,7 +209,7 @@ export const TrophiesIndex = () => {
 
       <section className="w-full bg-white py-14 px-6">
         {/* Title */}
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center scroll-fade-up">
           Premium Trophies & Awards
         </p>
 
@@ -91,7 +218,7 @@ export const TrophiesIndex = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex items-center justify-center rounded-lg"
+              className="flex items-center justify-center rounded-lg scroll-zoom-card"
               style={{
                 backgroundColor: "#f3f4f6",
                 width: "200px",
@@ -108,7 +235,7 @@ export const TrophiesIndex = () => {
         </div>
 
         {/* Description */}
-        <div className="max-w-2xl mx-auto text-center mb-10">
+        <div className="max-w-2xl mx-auto text-center mb-10 scroll-fade-up">
           <p className="text-sm leading-relaxed">
             Glenroy Sports & Trophies offers a comprehensive range of trophies
             and awards to celebrate every achievement. From sports competitions
@@ -121,51 +248,33 @@ export const TrophiesIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-col items-center gap-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-16">
+        <div className="flex flex-col items-center gap-4 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-6">
           {features.map((feature) => (
             <div
-              key={feature.label}
-              className="flex items-start gap-3 w-full max-w-[200px]"
+              key={feature.title}
+              className="w-full md:w-auto scroll-fade-up"
             >
-              {/* Icon */}
-              <div className="flex-shrink-0 mt-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                >
-                  <rect width="34" height="34" rx="17" fill="#0A3D62" />
-                  <rect
-                    x="8"
-                    y="8"
-                    width="18"
-                    height="18"
-                    rx="9"
-                    fill="#C91526"
-                  />
-                </svg>
-              </div>
-
-              {/* Text */}
-              <span className="font-medium text-sm mt-3 leading-snug text-left">
-                {feature.label}
-              </span>
+              <FeatureChip
+                icon={feature.icon}
+                subtitle={feature.subtitle}
+                title={feature.title}
+              />
             </div>
           ))}
         </div>
       </section>
 
       <div className="bg-[#F5F5F5] flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center scroll-fade-up">
           Ready to Order?
         </p>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center scroll-fade-up">
           Click below to browse our full trophies catalog and place your order.
         </p>
 
-        <CatelogCard data={catelogData} />
+        <div>
+          <CatelogCard data={catelogData} />
+        </div>
       </div>
 
       <Banner image={"/Trophy_Image.png"} />

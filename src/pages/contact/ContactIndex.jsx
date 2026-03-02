@@ -490,11 +490,16 @@ export const ContactIndex = () => {
 
       <div className="flex justify-center p-10">
         <div className="w-full h-[540px] bg-[#f1f1f1] overflow-hidden">
+          {/* Embedded Google Map - Zoomed Out */}
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.306090303248!2d2.294481315674282!3d48.85884497928712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f0349a8d395%3A0x74a9d0b607b59b53!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1617809356500!5m2!1sen!2sus"
+            title="Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6308.109125335593!2d144.91907557602666!3d-37.70612037193982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65b005a4809a5%3Ab151728bb30c37db!2s98%20Wheatsheaf%20Rd%2C%20Glenroy%20VIC%203046%2C%20Australia!5e0!3m2!1sen!2sau!4v1717558168000!5m2!1sen!2sau"
             width="100%"
             height="100%"
-            aria-hidden="false"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>

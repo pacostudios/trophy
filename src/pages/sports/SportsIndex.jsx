@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TopBanner } from "../../components/common/TopBanner";
 import { CatelogCard } from "../../components/common/CatelogCard";
 import { Banner } from "../../components/common/Banner";
+import FeatureChip from "../../components/common/FeatureChip";
 
 export const SportsIndex = () => {
   const icon = (
@@ -52,10 +53,90 @@ export const SportsIndex = () => {
     },
   ];
 
+  const BallIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="M12 2C9.5 4.5 7.5 8 7.5 12C7.5 16 9.5 19.5 12 22"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M12 2C14.5 4.5 16.5 8 16.5 12C16.5 16 14.5 19.5 12 22"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M4 9.5C7 10.5 9.5 11 12 11C14.5 11 17 10.5 20 9.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+
+  const ShirtIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M8 4L10.5 6H13.5L16 4L19 5.5L17.5 9H6.5L5 5.5L8 4Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7 9V19H17V9"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
+  const StarIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M12 3.5L13.9 8.1L18.9 8.5L15 11.7L16.2 16.6L12 14L7.8 16.6L9 11.7L5.1 8.5L10.1 8.1L12 3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+
   const features = [
-    { label: `Wide Product Range` },
-    { label: "Team Uniforms" },
-    { label: "Quality Brands" },
+    {
+      title: "Wide Product Range",
+      subtitle: "Sports Catalog",
+      icon: BallIcon,
+    },
+    {
+      title: "Team Uniforms",
+      subtitle: "For Every Club",
+      icon: ShirtIcon,
+    },
+    {
+      title: "Quality Brands",
+      subtitle: "Trusted Gear",
+      icon: StarIcon,
+    },
   ];
 
   const catelogData = {
@@ -64,6 +145,33 @@ export const SportsIndex = () => {
       "Visit our partner website to browse the complete catalog of sports equipment, uniforms, and merchandise. Place your order directly online.",
     buttons: [{ title: "Visit Sports catalog", link: "#" }],
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const animatedElements = document.querySelectorAll(
+      ".scroll-fade-up, .scroll-zoom-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
       <TopBanner
@@ -76,7 +184,7 @@ export const SportsIndex = () => {
 
       <section className="w-full bg-white py-14 px-6">
         {/* Title */}
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium mb-2 sm:mb-3 text-[#0A3D62] text-center scroll-fade-up">
           Quality Sports Products
         </p>
 
@@ -85,7 +193,7 @@ export const SportsIndex = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex items-center justify-center rounded-lg"
+              className="flex items-center justify-center rounded-lg scroll-zoom-card"
               style={{
                 backgroundColor: "#f3f4f6",
                 width: "200px",
@@ -102,7 +210,7 @@ export const SportsIndex = () => {
         </div>
 
         {/* Description */}
-        <div className="max-w-2xl mx-auto text-center mb-10">
+        <div className="max-w-2xl mx-auto text-center mb-10 scroll-fade-up">
           <p className="text-sm leading-relaxed">
             Glenroy Sports &amp; Trophies offers a range of Sports Catalog Kits
             Created in Tailbone you are able to select from a wide range of
@@ -116,51 +224,33 @@ export const SportsIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div className="flex flex-col items-center gap-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-16">
+        <div className="flex flex-col items-center gap-4 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-6">
           {features.map((feature) => (
             <div
-              key={feature.label}
-              className="flex items-start gap-3 w-full max-w-[180px]"
+              key={feature.title}
+              className="w-full md:w-auto scroll-fade-up"
             >
-              {/* Icon */}
-              <div className="flex-shrink-0 mt-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="34"
-                  height="34"
-                  viewBox="0 0 34 34"
-                  fill="none"
-                >
-                  <rect width="34" height="34" rx="17" fill="#0A3D62" />
-                  <rect
-                    x="8"
-                    y="8"
-                    width="18"
-                    height="18"
-                    rx="9"
-                    fill="#C91526"
-                  />
-                </svg>
-              </div>
-
-              {/* Text */}
-              <span className="font-medium text-sm mt-3 leading-snug text-left">
-                {feature.label}
-              </span>
+              <FeatureChip
+                icon={feature.icon}
+                subtitle={feature.subtitle}
+                title={feature.title}
+              />
             </div>
           ))}
         </div>
       </section>
 
       <div className="bg-[#F5F5F5] flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
-        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center">
+        <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center scroll-fade-up">
           Ready to Order?
         </p>
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[14px] opacity-90 drop-shadow-md font-medium text-center scroll-fade-up">
           Click below to browse our full sports catalog and place your order.
         </p>
 
-        <CatelogCard data={catelogData} />
+        <div>
+          <CatelogCard data={catelogData} />
+        </div>
       </div>
 
       <Banner image={"/Kit.png"} />

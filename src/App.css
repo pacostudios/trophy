@@ -2,6 +2,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -301,4 +305,32 @@ body {
   background: var(--brand-red);
   box-shadow: 0 0 12px var(--brand-red);
   transition: width 0.1s linear;
+}
+
+/* ===== Scroll reveal effects (Home page) ===== */
+
+.scroll-fade-up,
+.scroll-zoom-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    box-shadow 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.scroll-zoom-card {
+  transform: translateY(24px) scale(0.96);
+}
+
+.scroll-visible.scroll-fade-up,
+.scroll-visible.scroll-zoom-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-zoom-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.16);
 }

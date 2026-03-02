@@ -1,10 +1,11 @@
 import React from "react";
 import TrophyCard from "../../components/common/TrophyCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
 import { Banner } from "../../components/common/Banner";
 
 export const Index = () => {
+  const navigate = useNavigate();
   const features = [
     {
       title: "Premium Quality",
@@ -19,7 +20,7 @@ export const Index = () => {
 
   const categories = [
     {
-      image: '/CardImage1.png',
+      image: "/CardImage1.png",
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +40,7 @@ export const Index = () => {
       description: "Premium quality trophies for every achievement",
     },
     {
-      image: '/CardImage2.png',
+      image: "/CardImage2.png",
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +60,7 @@ export const Index = () => {
       description: "Professional-grade sporting goods and accessories",
     },
     {
-      image: '/CardImage3.png',
+      image: "/CardImage3.png",
       icons: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -159,11 +160,15 @@ export const Index = () => {
     },
   ];
 
+  const handleNavigate = () => {
+    navigate("/contact");
+  };
+
   return (
     <div className="h-full flex flex-col gap-6 sm:gap-8">
       <div className="relative w-full min-h-[400px] flex items-center">
         <img
-          src={'/banner_img1.png'}
+          src={"/banner_img1.png"}
           alt="Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -171,7 +176,7 @@ export const Index = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <div className="relative z-10 flex flex-col items-start justify-center px-6 sm:px-10 md:px-16">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white animate-heading-hero">
             Celebrate Every Victory
           </h1>
 
@@ -179,8 +184,11 @@ export const Index = () => {
             Premium Trophies & Awards for Champions.
           </p>
 
-          <button className="py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-6 rounded-[8px] bg-[#C91526] hover:bg-[#B01322] text-white font-medium text-sm sm:text-base transition-colors duration-200">
-            Shop Now
+          <button
+            className="py-2 sm:py-2.5 md:py-3 px-4 sm:px-5 md:px-6 rounded-[8px] bg-[#C91526] hover:bg-[#B01322] text-white font-medium text-sm sm:text-base transition-colors duration-200"
+            onClick={handleNavigate}
+          >
+            Contact Us
           </button>
         </div>
       </div>
@@ -246,7 +254,7 @@ export const Index = () => {
         </p>
         <div className="w-full flex justify-center">
           <img
-            src={'/shop_image.png'}
+            src={"/shop_image.png"}
             alt="Award background"
             className="w-full max-w-[600px] h-[180px] sm:h-[240px] md:h-[270px] lg:h-[300px] object-cover rounded-lg shadow-lg"
           />
@@ -291,7 +299,7 @@ export const Index = () => {
         </div>
       </div>
 
-      <Banner image={'/Trophy_Image.png'} />
+      <Banner image={"/Trophy_Image.png"} />
     </div>
   );
 };

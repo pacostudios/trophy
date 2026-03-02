@@ -18,7 +18,7 @@ export const TopBanner = ({
 
       <div className="absolute inset-0 bg-black/40"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-10 md:px-16">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 animate-chip-reveal">
         {ischip && (
           <div className="py-2 px-6 bg-[#0A3D6280] rounded-full flex items-center gap-2 mb-4 sm:mb-6">
             {icon || ""}
@@ -27,7 +27,7 @@ export const TopBanner = ({
             </p>
           </div>
         )}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white text-center animate-heading-hero">
           {title}
         </h1>
 

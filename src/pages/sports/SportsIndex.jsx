@@ -23,32 +23,32 @@ export const SportsIndex = () => {
     {
       id: 1,
       alt: "Soccer Ball",
-      src: '/Football.png',
+      src: "/Football.png",
     },
     {
       id: 2,
       alt: "American Football",
-      src: '/Amer-Football.png',
+      src: "/Amer-Football.png",
     },
     {
       id: 3,
       alt: "Baseball Bat",
-      src: '/BaseballBat.png',
+      src: "/BaseballBat.png",
     },
     {
       id: 4,
       alt: "Baseball",
-      src: '/Baseball.png',
+      src: "/Baseball.png",
     },
     {
       id: 5,
       alt: "Cricket Bat",
-      src: '/bat.png',
+      src: "/bat.png",
     },
     {
       id: 6,
       alt: "Cricket Ball",
-      src: '/cricketball.png',
+      src: "/cricketball.png",
     },
   ];
 
@@ -67,7 +67,7 @@ export const SportsIndex = () => {
   return (
     <div>
       <TopBanner
-        image={'/sports_banner.png'}
+        image={"/sports_banner.png"}
         icon={icon}
         chip_title={"SPORTS PRODUCTS"}
         title={"Sports Equipment & Merchandise"}
@@ -116,40 +116,37 @@ export const SportsIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div
-          className="
-            flex flex-wrap justify-center gap-16
-            sm:grid sm:grid-cols-1 sm:gap-8 sm:justify-items-center
-            md:flex md:flex-wrap md:justify-center md:gap-16
-          "
-        >
+        <div className="flex flex-col items-center gap-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-16">
           {features.map((feature) => (
             <div
               key={feature.label}
-              className="
-                flex items-center gap-2
-                w-full justify-center
-                sm:w-auto sm:justify-start
-              "
+              className="flex items-start gap-3 w-full max-w-[180px]"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="34"
-                height="34"
-                viewBox="0 0 34 34"
-                fill="none"
-              >
-                <rect width="34" height="34" rx="17" fill="#0A3D62" />
-                <rect
-                  x="8"
-                  y="8"
-                  width="18"
-                  height="18"
-                  rx="9"
-                  fill="#C91526"
-                />
-              </svg>
-              <span className="font-medium text-sm">{feature.label}</span>
+              {/* Icon */}
+              <div className="flex-shrink-0 mt-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34"
+                  fill="none"
+                >
+                  <rect width="34" height="34" rx="17" fill="#0A3D62" />
+                  <rect
+                    x="8"
+                    y="8"
+                    width="18"
+                    height="18"
+                    rx="9"
+                    fill="#C91526"
+                  />
+                </svg>
+              </div>
+
+              {/* Text */}
+              <span className="font-medium text-sm mt-3 leading-snug text-left">
+                {feature.label}
+              </span>
             </div>
           ))}
         </div>
@@ -166,7 +163,7 @@ export const SportsIndex = () => {
         <CatelogCard data={catelogData} />
       </div>
 
-      <Banner image={'/Kit.png'} />
+      <Banner image={"/Kit.png"} />
     </div>
   );
 };

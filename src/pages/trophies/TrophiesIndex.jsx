@@ -121,40 +121,37 @@ export const TrophiesIndex = () => {
         </div>
 
         {/* Feature Tags */}
-        <div
-          className="
-            flex flex-wrap justify-center gap-16
-            sm:grid sm:grid-cols-1 sm:gap-8 sm:justify-items-center
-            md:flex md:flex-wrap md:justify-center md:gap-16
-          "
-        >
+        <div className="flex flex-col items-center gap-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-16">
           {features.map((feature) => (
             <div
               key={feature.label}
-              className="
-                flex items-center gap-2
-                w-full justify-center
-                sm:w-auto sm:justify-start
-              "
+              className="flex items-start gap-3 w-full max-w-[200px]"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="34"
-                height="34"
-                viewBox="0 0 34 34"
-                fill="none"
-              >
-                <rect width="34" height="34" rx="17" fill="#0A3D62" />
-                <rect
-                  x="8"
-                  y="8"
-                  width="18"
-                  height="18"
-                  rx="9"
-                  fill="#C91526"
-                />
-              </svg>
-              <span className="font-medium text-sm">{feature.label}</span>
+              {/* Icon */}
+              <div className="flex-shrink-0 mt-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34"
+                  fill="none"
+                >
+                  <rect width="34" height="34" rx="17" fill="#0A3D62" />
+                  <rect
+                    x="8"
+                    y="8"
+                    width="18"
+                    height="18"
+                    rx="9"
+                    fill="#C91526"
+                  />
+                </svg>
+              </div>
+
+              {/* Text */}
+              <span className="font-medium text-sm mt-3 leading-snug text-left">
+                {feature.label}
+              </span>
             </div>
           ))}
         </div>

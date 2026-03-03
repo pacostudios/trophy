@@ -3,6 +3,7 @@ import TrophyCard from "../../components/common/TrophyCard";
 import { Link, useNavigate } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
 import { Banner } from "../../components/common/Banner";
+import SportMarquee from "../../components/common/Marqee";
 
 export const Index = () => {
   const navigate = useNavigate();
@@ -168,7 +169,7 @@ export const Index = () => {
     if (typeof window === "undefined") return;
 
     const animatedElements = document.querySelectorAll(
-      ".scroll-fade-up, .scroll-zoom-card"
+      ".scroll-fade-up, .scroll-zoom-card",
     );
 
     const observer = new IntersectionObserver(
@@ -182,7 +183,7 @@ export const Index = () => {
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     animatedElements.forEach((el) => observer.observe(el));
@@ -306,6 +307,8 @@ export const Index = () => {
           </Link>
         </div>
       </div>
+
+      <SportMarquee />
 
       <div className="bg-[#F5F5F5] flex flex-col justify-center items-center gap-4 py-8 sm:py-10 md:py-12 px-4 sm:px-8 md:px-16 lg:px-24 w-full">
         <p className="text-2xl sm:text-3xl md:text-[38px] font-medium text-[#0A3D62] text-center scroll-fade-up">

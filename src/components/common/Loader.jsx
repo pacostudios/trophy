@@ -78,7 +78,7 @@ export default function Loader({ onFinish }) {
               </span>
             ))}
           </div>
-          <div className="tagline">Sports and Trophy</div>
+          <div className="tagline">Sports and Trophies</div>
         </div>
 
         {!morph && (

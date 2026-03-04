@@ -28,7 +28,7 @@ function generateCaptcha() {
 }
 
 function getCaptchaText(captchaArr) {
-  return captchaArr.map(item => item.char).join('');
+  return captchaArr.map((item) => item.char).join("");
 }
 
 const validationSchema = Yup.object().shape({
@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
     .required("Phone Number is required")
     .matches(
       /^(\+?\d{1,3}[-.\s]?)?(\(?\d{2,4}\)?[-.\s]?)*\d{6,10}$/,
-      "Enter a valid phone number"
+      "Enter a valid phone number",
     ),
   emailAddress: Yup.string()
     .required("Email Address is required")
@@ -75,27 +75,28 @@ export const ContactIndex = () => {
     captchaTextRef.current = getCaptchaText(newCaptcha);
   };
 
-  const handleSendEmail = async (values, { setSubmitting, resetForm, setFieldError }) => {
+  const handleSendEmail = async (
+    values,
+    { setSubmitting, resetForm, setFieldError },
+  ) => {
     const currentCaptcha = captchaTextRef.current;
     if (
-      values.captchaInput.trim().toUpperCase() !==
-      currentCaptcha.toUpperCase()
+      values.captchaInput.trim().toUpperCase() !== currentCaptcha.toUpperCase()
     ) {
       setFieldError(
         "captchaInput",
-        "Captcha does not match. Please try again."
+        "Captcha does not match. Please try again.",
       );
       setSubmitting(false);
       refreshCaptcha();
       return;
     }
 
-    const SERVICE_ID = import.meta.env.VITE_SERVICE_ID
+    const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
     const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
     const USER_ID = import.meta.env.VITE_USER_ID;
 
     console.log(SERVICE_ID, TEMPLATE_ID, USER_ID);
-    
 
     const templateParams = {
       fullName: values.fullName,
@@ -105,12 +106,7 @@ export const ContactIndex = () => {
     };
 
     try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams,
-        USER_ID
-      );
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID);
       setEmailSendStatus("success");
       resetForm();
       refreshCaptcha();
@@ -125,7 +121,7 @@ export const ContactIndex = () => {
   return (
     <div>
       <TopBanner
-        image={'/ContactBanner.png'}
+        image={"/ContactBanner.png"}
         ischip={false}
         title={"CONTACT US"}
         description={
@@ -183,7 +179,7 @@ export const ContactIndex = () => {
                   Phones
                 </span>
               </div>
-              <p className="text-sm text-gray-700 pl-6">03 9300 1175</p>
+              <p className="text-sm text-gray-700 pl-6">0420722242</p>
             </div>
 
             {/* MOBILE */}
@@ -205,20 +201,69 @@ export const ContactIndex = () => {
                   Mobile
                 </span>
               </div>
-              <p className="text-sm text-gray-700 pl-6">0422 120 775</p>
+              <p className="text-sm text-gray-700 pl-6">93001175</p>
             </div>
 
             {/* ABN NUMBER */}
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="16"
+                  viewBox="0 0 1000 630"
+                  fill="none"
                   className="w-4 h-4 flex-shrink-0"
-                  style={{ color: "#C91526" }}
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z" />
+                  {/* Red background */}
+                  <rect
+                    x="0"
+                    y="0"
+                    width="1000"
+                    height="630"
+                    rx="8"
+                    fill="#C91526"
+                  />
+                  {/* Inner white content */}
+                  <circle cx="215" cy="300" r="100" fill="white" />
+                  <path
+                    d="M55 500C55 450 95 410 145 410H285C335 410 375 450 375 500V600H55V500Z"
+                    fill="white"
+                  />
+                  <text
+                    x="565"
+                    y="275"
+                    fontFamily="Arial, sans-serif"
+                    fontSize="160"
+                    fontWeight="bold"
+                    fill="white"
+                  >
+                    ABN
+                  </text>
+                  <rect
+                    x="530"
+                    y="325"
+                    width="415"
+                    height="30"
+                    rx="15"
+                    fill="white"
+                  />
+                  <rect
+                    x="530"
+                    y="415"
+                    width="415"
+                    height="30"
+                    rx="15"
+                    fill="white"
+                  />
+                  <rect
+                    x="530"
+                    y="505"
+                    width="415"
+                    height="30"
+                    rx="15"
+                    fill="white"
+                  />
                 </svg>
                 <span
                   className="text-xs font-bold uppercase tracking-wide"
@@ -227,7 +272,7 @@ export const ContactIndex = () => {
                   ABN Number
                 </span>
               </div>
-              <p className="text-sm text-gray-700 pl-6">17 5871 09539</p>
+              <p className="text-sm text-gray-700 pl-6">69 674 471 777</p>
             </div>
 
             {/* MAIL */}
@@ -314,7 +359,8 @@ export const ContactIndex = () => {
                   )}
                   {emailSendStatus === "error" && (
                     <div className="mb-2 text-red-600 text-sm font-semibold">
-                      There was a problem sending your message. Please try again.
+                      There was a problem sending your message. Please try
+                      again.
                     </div>
                   )}
 
@@ -326,7 +372,7 @@ export const ContactIndex = () => {
                         name="fullName"
                         placeholder="Full Name*"
                         className={inputClass}
-                        onBlur={e => {
+                        onBlur={(e) => {
                           setFieldTouched("fullName", true);
                         }}
                       />
@@ -342,7 +388,7 @@ export const ContactIndex = () => {
                         name="phoneNumber"
                         placeholder="Phone Number*"
                         className={inputClass}
-                        onBlur={e => {
+                        onBlur={(e) => {
                           setFieldTouched("phoneNumber", true);
                         }}
                       />
@@ -361,7 +407,7 @@ export const ContactIndex = () => {
                       name="emailAddress"
                       placeholder="Email Address*"
                       className={inputClass}
-                      onBlur={e => setFieldTouched("emailAddress", true)}
+                      onBlur={(e) => setFieldTouched("emailAddress", true)}
                     />
                     <ErrorMessage
                       name="emailAddress"
@@ -378,7 +424,7 @@ export const ContactIndex = () => {
                       placeholder="Message"
                       rows={6}
                       className={`${inputClass} resize-none`}
-                      onBlur={e => setFieldTouched("message", true)}
+                      onBlur={(e) => setFieldTouched("message", true)}
                     />
                     <ErrorMessage
                       name="message"
@@ -398,7 +444,7 @@ export const ContactIndex = () => {
                         className={`${inputClass}`}
                         maxLength={4}
                         autoComplete="off"
-                        onBlur={e => setFieldTouched("captchaInput", true)}
+                        onBlur={(e) => setFieldTouched("captchaInput", true)}
                       />
                       <ErrorMessage
                         name="captchaInput"

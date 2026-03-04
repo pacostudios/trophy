@@ -3,7 +3,7 @@ import React from "react";
 const socialMediaLinks = [
   {
     name: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/share/1CQ2dj4W1J/?mibextid=wwXIfr",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ const socialMediaLinks = [
   },
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/glenroysportsandtrophies",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -44,29 +44,8 @@ const socialMediaLinks = [
       "w-10 h-10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-200",
   },
   {
-    name: "X (Twitter)",
-    href: "#",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="34"
-        height="34"
-        viewBox="0 0 34 34"
-        fill="none"
-      >
-        <rect width="34" height="34" rx="17" fill="white" />
-        <path
-          d="M25.1566 25.6109C25.092 25.7286 24.9971 25.8267 24.8817 25.8951C24.7662 25.9636 24.6346 25.9998 24.5004 26H20.0004C19.8741 26 19.75 25.9681 19.6393 25.9073C19.5287 25.8465 19.4352 25.7587 19.3676 25.6522L15.5716 19.6869L10.0554 25.7544C9.92089 25.8988 9.7349 25.9845 9.53772 25.9927C9.34054 26.0009 9.14805 25.9311 9.002 25.7984C8.85595 25.6657 8.7681 25.4807 8.7575 25.2836C8.74689 25.0866 8.81439 24.8933 8.94536 24.7456L14.7363 18.3706L8.86755 9.15313C8.79527 9.03973 8.75481 8.90898 8.7504 8.77458C8.746 8.64018 8.7778 8.50707 8.8425 8.38918C8.90719 8.27129 9.0024 8.17296 9.11813 8.10449C9.23387 8.03603 9.36589 7.99993 9.50036 8H14.0004C14.1266 8.00004 14.2508 8.03194 14.3614 8.09274C14.472 8.15353 14.5655 8.24127 14.6332 8.34781L18.4291 14.3131L23.9454 8.24562C24.0798 8.10117 24.2658 8.01555 24.463 8.00731C24.6602 7.99907 24.8527 8.06888 24.9987 8.20161C25.1448 8.33435 25.2326 8.51929 25.2432 8.71636C25.2538 8.91343 25.1863 9.10674 25.0554 9.25438L19.2644 15.6247L25.1332 24.8478C25.2051 24.9613 25.2451 25.0919 25.2493 25.2262C25.2534 25.3604 25.2214 25.4933 25.1566 25.6109Z"
-          fill="black"
-        />
-      </svg>
-    ),
-    className:
-      "w-10 h-10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-200",
-  },
-  {
     name: "Google",
-    href: "#",
+    href: "https://glenroysportsandtrophies.com/",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +111,7 @@ export const Footer = () => {
               >
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z" />
               </svg>
-              <span className="text-sm text-white">03 9300 1175</span>
+              <span className="text-sm text-white">0420722242</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -178,6 +157,8 @@ export const Footer = () => {
               <a
                 key={media.name}
                 href={media.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={media.className}
                 aria-label={media.name}
               >

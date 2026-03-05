@@ -194,7 +194,7 @@ export const UniformIndex = () => {
   return (
     <div>
       <TopBanner
-        image={"/Uniform_Topbanner.png"}
+        image={"/Uniform_Topbanner.webp"}
         icon={icon}
         chip_title={"CLOTHING & UNIFORMS"}
         title={"CLOTHING & UNIFORMS"}

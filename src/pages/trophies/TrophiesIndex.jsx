@@ -198,7 +198,7 @@ export const TrophiesIndex = () => {
   return (
     <div>
       <TopBanner
-        image={"/Trophies_banner.png"}
+        image={"/Trophies_banner.webp"}
         icon={icon}
         chip_title={"TROPHIES & AWARDS"}
         title={"Trophies & Awards Collection"}

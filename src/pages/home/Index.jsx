@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ServiceCard } from "../../components/common/ServiceCard";
 import { Banner } from "../../components/common/Banner";
 import SportMarquee from "../../components/common/Marqee";
+import { VedioComponent } from "../../components/common/VedioComponent";
 
 export const Index = () => {
   const navigate = useNavigate();
@@ -195,7 +196,7 @@ export const Index = () => {
     <div className="h-full flex flex-col gap-6 sm:gap-8">
       <div className="relative w-full min-h-[400px] flex items-center">
         <img
-          src={"/banner_img1.png"}
+          src={"/banner_img1.webp"}
           alt="Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -329,6 +330,10 @@ export const Index = () => {
           ))}
         </div>
       </div>
+
+      {/* --- Trophy Videos Section START --- */}
+      <VedioComponent/>
+      {/* --- Trophy Videos Section END --- */}
 
       <Banner image={"/Trophy_Image.png"} />
     </div>

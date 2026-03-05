@@ -121,7 +121,7 @@ export const ContactIndex = () => {
   return (
     <div>
       <TopBanner
-        image={"/ContactBanner.png"}
+        image={"/ContactBanner.webp"}
         ischip={false}
         title={"CONTACT US"}
         description={
@@ -179,7 +179,7 @@ export const ContactIndex = () => {
                   Phones
                 </span>
               </div>
-              <p className="text-sm text-gray-700 pl-6">0420722242</p>
+              <p className="text-sm text-gray-700 pl-6">93001175</p>
             </div>
 
             {/* MOBILE */}
@@ -201,9 +201,9 @@ export const ContactIndex = () => {
                   Mobile
                 </span>
               </div>
-              <p className="text-sm text-gray-700 pl-6">93001175</p>
+              <p className="text-sm text-gray-700 pl-6">0420722242</p>
             </div>
-
+ 
             {/* ABN NUMBER */}
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
@@ -320,7 +320,7 @@ export const ContactIndex = () => {
               </div>
               <div className="text-sm text-gray-700 pl-6 flex flex-col gap-0.5">
                 <p>Monday to Friday: 9:30am - 5:30pm</p>
-                <p>Saturday: 9:00am - 1:00pm</p>
+                <p>Saturday by appointment only</p>
                 <p>Sunday Closed</p>
               </div>
             </div>

@@ -175,7 +175,7 @@ export const SportsIndex = () => {
   return (
     <div>
       <TopBanner
-        image={"/sports_banner.png"}
+        image={"/sports_banner.webp"}
         icon={icon}
         chip_title={"SPORTS PRODUCTS"}
         title={"Sports Equipment & Merchandise"}

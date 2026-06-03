@@ -5,10 +5,12 @@ import { TrophiesIndex } from "../pages/trophies/TrophiesIndex";
 import { ContactIndex } from "../pages/contact/ContactIndex";
 import { SportsIndex } from "../pages/sports/SportsIndex";
 import { UniformIndex } from "../pages/uniforms/UniformIndex";
+import ScrollToTop from "../components/common/ScrollToTop";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Index />} />

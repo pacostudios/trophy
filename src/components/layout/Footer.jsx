@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const socialMediaLinks = [
   {
@@ -137,13 +138,13 @@ export const Footer = () => {
           <h3 className="text-base text-white">Quick Links</h3>
           <nav className="flex flex-wrap gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="text-sm text-gray-200 hover:text-white transition-colors duration-200 capitalize"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

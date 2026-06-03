@@ -198,7 +198,7 @@ export const Index = () => {
         <img
           src={"/banner_img1.webp"}
           alt="Banner"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-right sm:object-center"
         />
 
         <div className="absolute inset-0 bg-black/40"></div>

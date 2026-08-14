@@ -12,6 +12,7 @@ export const Navbar = () => {
     { label: "Sports", to: "/sports" },
     { label: "Trophies", to: "/trophies" },
     { label: "Uniforms", to: "/uniforms" },
+    { label: "Shop", to: "/shop" }
   ];
 
   return (
